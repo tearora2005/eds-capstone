@@ -111,7 +111,14 @@
       ],
       "coverageGaps": [],
       "description": "Section overview page with intro heading and card-grid listing of child items",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "cards-team",
+          "instances": [
+            ".experiencefragment.cmp-experience-fragment--contributor"
+          ]
+        }
+      ]
     },
     {
       "name": "adventure-detail",
@@ -151,7 +158,26 @@
       ],
       "coverageGaps": [],
       "description": "Detail page with hero image, title, metadata bar and long-form body content",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": [
+            ".carousel.cmp-carousel--mini"
+          ]
+        },
+        {
+          "name": "columns-spec",
+          "instances": [
+            ".contentfragment.cmp-contentfragment--elements"
+          ]
+        },
+        {
+          "name": "tabs-detail",
+          "instances": [
+            ".tabs.panelcontainer"
+          ]
+        }
+      ]
     },
     {
       "name": "adventure-listing",
@@ -161,7 +187,20 @@
       ],
       "coverageGaps": [],
       "description": "Listing page with heading and grid of teaser cards linking to detail pages",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            ".teaser.cmp-teaser--hero"
+          ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            ".image-list.list"
+          ]
+        }
+      ]
     },
     {
       "name": "faq-page",

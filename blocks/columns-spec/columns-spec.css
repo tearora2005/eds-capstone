@@ -1,0 +1,37 @@
+/* columns-spec — WKND adventure metadata specification list.
+   Vertical label/value pairs, each with a small uppercase label above a
+   larger value and a thin accent bar. Migrated from the vanilla columns block. */
+
+.columns-spec > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns-spec img {
+  width: 100%;
+}
+
+.columns-spec > div > div {
+  order: 1;
+}
+
+.columns-spec > div > .columns-spec-img-col {
+  order: 0;
+}
+
+.columns-spec > div > .columns-spec-img-col img {
+  display: block;
+}
+
+@media (width >= 900px) {
+  .columns-spec > div {
+    align-items: center;
+    flex-direction: unset;
+    gap: 24px;
+  }
+
+  .columns-spec > div > div {
+    flex: 1;
+    order: unset;
+  }
+}
