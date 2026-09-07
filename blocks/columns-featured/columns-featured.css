@@ -1,0 +1,116 @@
+/* columns-featured — WKND "Featured Article" teaser
+   Source: .teaser.cmp-teaser--featured on wknd.site
+   Layout: image column + light-grey content box (eyebrow, heading, description, CTA).
+   Values extracted from source computed styles. */
+
+.columns-featured > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns-featured img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* mobile: image on top, content box below */
+.columns-featured > div > div {
+  order: 1;
+}
+
+.columns-featured > div > .columns-featured-img-col {
+  order: 0;
+  padding: 0;
+}
+
+/* content cell = light-grey box */
+.columns-featured > div > div:not(.columns-featured-img-col) {
+  order: 1;
+  padding: 40px 24px;
+  background-color: #ebebeb;
+  color: var(--text-color);
+}
+
+/* description paragraphs (general — keep before :first-child/:last-child overrides) */
+.columns-featured > div > div:not(.columns-featured-img-col) > p {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24.5px;
+  color: var(--text-color);
+}
+
+/* eyebrow label (first paragraph, e.g. "Featured Article") */
+.columns-featured > div > div:not(.columns-featured-img-col) > p:first-child {
+  margin: 0 0 13.5px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 45px;
+}
+
+/* heading (optional — authors may add a title) */
+.columns-featured h2 {
+  margin: 18px 0;
+  font-family: var(--heading-font-family);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 54px;
+  color: var(--text-color);
+}
+
+/* CTA link styled as the WKND yellow button */
+.columns-featured > div > div:not(.columns-featured-img-col) > p:last-child {
+  margin-top: 24px;
+}
+
+.columns-featured a:any-link {
+  display: inline-block;
+  padding: 14px 35px;
+  background-color: #ffea00;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.columns-featured a:hover {
+  background-color: #ffea00;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  .columns-featured > div {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .columns-featured > div > div {
+    order: unset;
+  }
+
+  /* source proportions: image 709px / content 427px ≈ 62% / 38% */
+  .columns-featured > div > .columns-featured-img-col {
+    flex: 62;
+    order: unset;
+  }
+
+  .columns-featured > div > div:not(.columns-featured-img-col) {
+    display: flex;
+    flex: 38;
+    flex-direction: column;
+    padding: 63px 36px 36px;
+  }
+
+  .columns-featured > div > .columns-featured-img-col picture {
+    display: flex;
+    height: 100%;
+  }
+
+  .columns-featured > div > .columns-featured-img-col img {
+    height: 100%;
+  }
+}

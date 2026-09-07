@@ -1,20 +1,150 @@
+/* WKND footer — dark bar with light logo, nav, social block, and legal text.
+   Mobile-first: base styles are mobile; @media (width >= 900px) enhances desktop. */
+
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: #202020;
+  color: #ebebeb;
+  font-family: var(--body-font-family);
+  font-size: 14px;
 }
 
-footer .footer > div {
-  margin: auto;
+footer .footer-inner {
   max-width: 1200px;
-  padding: 40px 24px 24px;
+  margin: 0 auto;
+  padding: 32px 24px 40px;
 }
 
-footer .footer p {
+footer a:any-link {
+  color: #ebebeb;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
+}
+
+/* --- Top row: brand/nav + social --- */
+footer .footer-top {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+footer .footer-brand img {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+footer .footer-brand ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+footer .footer-brand ul li a {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Social block */
+footer .footer-social h4 {
+  margin: 0 0 12px;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ebebeb;
+}
+
+footer .footer-social ul {
+  display: flex;
+  gap: 12px;
+}
+
+footer .footer-social ul li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+footer .footer-social ul li a:hover {
+  background-color: #4a4a4a;
+}
+
+footer .footer-social ul li a img {
+  width: 20px;
+  height: 20px;
+}
+
+/* --- Legal / description block --- */
+footer .footer-legal {
+  padding-top: 24px;
+  font-size: 12px; /* matches wknd.site footer text */
+  line-height: 1.25;
+  color: #f7f7f7;
+}
+
+footer .footer-legal p {
+  margin: 0 0 12px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer-legal a:any-link {
+  color: #ebebeb;
+  text-decoration: underline;
 }
 
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+  footer .footer-inner {
+    padding: 16px 32px 24px;
+  }
+
+  footer .footer-top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  footer .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  footer .footer-brand img {
+    width: 128px;
+    margin-bottom: 0;
+  }
+
+  footer .footer-brand ul {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  footer .footer-social {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  footer .footer-social h4 {
+    margin: 0;
   }
 }
