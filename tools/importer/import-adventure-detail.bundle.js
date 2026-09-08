@@ -246,7 +246,7 @@ var CustomImportScript = (() => {
     const body = metaTable.querySelector("tbody") || metaTable;
     const tr = document2.createElement("tr");
     const keyCell = document2.createElement("td");
-    keyCell.textContent = "Tags";
+    keyCell.textContent = "Category";
     const valCell = document2.createElement("td");
     valCell.textContent = tags;
     tr.append(keyCell, valCell);

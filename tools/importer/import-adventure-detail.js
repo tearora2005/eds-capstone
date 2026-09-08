@@ -55,9 +55,10 @@ const transformers = [
 ];
 
 /**
- * Appends a "Tags" row to the generated Metadata block, using the activity
- * value stashed on the root by the tags transformer. Produces <meta name="tags">
- * on the published page, which the query-index `tags` column reads.
+ * Appends a "Category" row to the generated Metadata block, using the activity
+ * value stashed on the root by the tags transformer. Produces
+ * <meta name="category"> on the published page, which the query-index `tags`
+ * column reads (via meta[name="category"]).
  * @param {Element} main root element (after createMetadata has run)
  * @param {Document} document
  */
@@ -75,9 +76,12 @@ function appendTagsMetadata(main, document) {
   if (!metaTable) return;
 
   const body = metaTable.querySelector('tbody') || metaTable;
+  // Use "Category" (not "Tags") as the metadata key: EDS maps a "Tags" key to
+  // <meta property="article:tag">, which the query-index scraper does not
+  // expose. "Category" emits a plain <meta name="category"> the index can read.
   const tr = document.createElement('tr');
   const keyCell = document.createElement('td');
-  keyCell.textContent = 'Tags';
+  keyCell.textContent = 'Category';
   const valCell = document.createElement('td');
   valCell.textContent = tags;
   tr.append(keyCell, valCell);
