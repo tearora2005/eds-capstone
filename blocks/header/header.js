@@ -1,6 +1,8 @@
 // WKND header — content-first. All copy/links/images come from /content/nav.plain.html.
 // header.js reads that DOM, builds the search control, and wires interactivity.
 
+import { decorateInternalLinks } from '../../scripts/scripts.js';
+
 /**
  * Loads the nav fragment (metadata-independent dual-fetch).
  * @returns {Promise<Document|null>} parsed fragment document
@@ -154,6 +156,9 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  // Normalize internal .html links to extensionless EDS paths.
+  decorateInternalLinks(block);
 
   // --- Viewport resize handling: reset mobile state when crossing to desktop ---
   const desktopMq = window.matchMedia('(width >= 900px)');
