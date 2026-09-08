@@ -4,7 +4,7 @@
 // PARSER IMPORTS
 import cardsTeamParser from './parsers/cards-team.js';
 import columnsFeaturedParser from './parsers/columns-featured.js';
-import cardsTeaserParser from './parsers/cards-teaser.js';
+import listingParser from './parsers/listing.js';
 import cardsSecureParser from './parsers/cards-secure.js';
 
 // TRANSFORMER IMPORTS
@@ -32,7 +32,7 @@ const PAGE_TEMPLATE = {
       ]
     },
     {
-      "name": "cards-teaser",
+      "name": "listing",
       "instances": [
         ".image-list.list"
       ]
@@ -50,7 +50,7 @@ const PAGE_TEMPLATE = {
 const parsers = {
   'cards-team': cardsTeamParser,
   'columns-featured': columnsFeaturedParser,
-  'cards-teaser': cardsTeaserParser,
+  listing: listingParser,
   'cards-secure': cardsSecureParser,
 };
 

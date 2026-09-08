@@ -9,6 +9,7 @@ import tabsDetailParser from './parsers/tabs-detail.js';
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/wknd-cleanup.js';
 import sectionsTransformer from './transformers/wknd-sections.js';
+import tagsTransformer from './transformers/wknd-tags.js';
 
 // PAGE TEMPLATE CONFIGURATION - Embedded from page-templates.json
 const PAGE_TEMPLATE = {
@@ -50,7 +51,38 @@ const parsers = {
 const transformers = [
   cleanupTransformer,
   sectionsTransformer,
+  tagsTransformer,
 ];
+
+/**
+ * Appends a "Tags" row to the generated Metadata block, using the activity
+ * value stashed on the root by the tags transformer. Produces <meta name="tags">
+ * on the published page, which the query-index `tags` column reads.
+ * @param {Element} main root element (after createMetadata has run)
+ * @param {Document} document
+ */
+function appendTagsMetadata(main, document) {
+  const tags = main.getAttribute('data-excat-tags');
+  main.removeAttribute('data-excat-tags');
+  if (!tags) return;
+
+  // The metadata block is a two-column table whose first cell is the key.
+  const tables = main.querySelectorAll('table');
+  const metaTable = [...tables].find((t) => {
+    const first = t.querySelector('tr th, tr td');
+    return first && /metadata/i.test(first.textContent);
+  });
+  if (!metaTable) return;
+
+  const body = metaTable.querySelector('tbody') || metaTable;
+  const tr = document.createElement('tr');
+  const keyCell = document.createElement('td');
+  keyCell.textContent = 'Tags';
+  const valCell = document.createElement('td');
+  valCell.textContent = tags;
+  tr.append(keyCell, valCell);
+  body.append(tr);
+}
 
 function executeTransformers(hookName, element, payload) {
   const enhancedPayload = {
@@ -132,6 +164,7 @@ export default {
     const hr = document.createElement('hr');
     main.appendChild(hr);
     WebImporter.rules.createMetadata(main, document);
+    appendTagsMetadata(main, document);
     WebImporter.rules.transformBackgroundImages(main, document);
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
 

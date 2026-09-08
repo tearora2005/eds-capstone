@@ -1,0 +1,107 @@
+/* listing — data-driven card grid. Reuses the cards-teaser card design
+   (image, uppercase title, uppercase muted description with ellipsis) and adds
+   an optional category filter bar. */
+
+.listing > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.listing > ul > li {
+  /* source has no card border, background, or shadow */
+  background-color: transparent;
+  border: none;
+
+  /* allow the grid item to shrink below content width so the description
+     can truncate with an ellipsis instead of stretching the track */
+  min-width: 0;
+}
+
+/* image cell */
+.listing .cards-teaser-card-image {
+  line-height: 0;
+}
+
+.listing .cards-teaser-card-image img {
+  width: 100%;
+  aspect-ratio: 13 / 10; /* source img 260 x 200 */
+  object-fit: cover;
+}
+
+/* body cell */
+.listing .cards-teaser-card-body {
+  margin: 9px 0 0; /* source image -> title gap */
+  min-width: 0;
+}
+
+.listing .cards-teaser-card-desc {
+  display: block;
+  max-width: 100%;
+  margin: 0;
+  min-width: 0;
+  font-size: 14px;
+  line-height: 21px;
+  color: rgb(105 105 105); /* source #696969 muted description */
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* title link */
+.listing .cards-teaser-card-body a {
+  display: block;
+  margin-bottom: 16px; /* source title -> description gap */
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 600;
+  color: var(--text-color); /* source #202020 */
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.listing .cards-teaser-card-body a:hover {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* category filter bar (adventures) */
+.listing .listing-filters {
+  list-style: none;
+  margin: 0 0 32px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.listing .listing-filters button {
+  margin: 0;
+  padding: 4px 0;
+  border: none;
+  background: none;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: rgb(105 105 105);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.listing .listing-filters button:hover,
+.listing .listing-filters button[aria-current="true"] {
+  color: var(--text-color);
+  border-bottom: 2px solid var(--text-color);
+}
+
+@media (width >= 900px) {
+  .listing > ul {
+    /* minmax(0, 1fr) so tracks can shrink and the ellipsis engages */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px 14px;
+  }
+}
