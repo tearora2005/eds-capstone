@@ -123,6 +123,12 @@
           "instances": [
             ".teaser.cmp-teaser--featured"
           ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            ".image-list.list"
+          ]
         }
       ]
     },
