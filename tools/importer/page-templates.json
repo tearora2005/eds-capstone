@@ -117,6 +117,12 @@
           "instances": [
             ".experiencefragment.cmp-experience-fragment--contributor"
           ]
+        },
+        {
+          "name": "columns-featured",
+          "instances": [
+            ".teaser.cmp-teaser--featured"
+          ]
         }
       ]
     },

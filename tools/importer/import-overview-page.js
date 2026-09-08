@@ -3,6 +3,7 @@
 
 // PARSER IMPORTS
 import cardsTeamParser from './parsers/cards-team.js';
+import columnsFeaturedParser from './parsers/columns-featured.js';
 
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/wknd-cleanup.js';
@@ -21,6 +22,12 @@ const PAGE_TEMPLATE = {
       "instances": [
         ".experiencefragment.cmp-experience-fragment--contributor"
       ]
+    },
+    {
+      "name": "columns-featured",
+      "instances": [
+        ".teaser.cmp-teaser--featured"
+      ]
     }
   ]
 };
@@ -28,6 +35,7 @@ const PAGE_TEMPLATE = {
 // PARSER REGISTRY
 const parsers = {
   'cards-team': cardsTeamParser,
+  'columns-featured': columnsFeaturedParser,
 };
 
 // TRANSFORMER REGISTRY
