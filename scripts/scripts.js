@@ -10,6 +10,7 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  toClassName,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -146,11 +147,40 @@ function decorateButtons(main) {
  * Decorates the main element.
  * @param {Element} main The main element
  */
+/**
+ * Applies section-metadata blocks as classes/styles on their parent section.
+ * The vendored aem.js decorateSections does not process section-metadata, so
+ * handle it here at the project level (standard EDS behavior).
+ * @param {Element} main The container element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll('.section-metadata').forEach((sectionMeta) => {
+    const section = sectionMeta.closest('.section');
+    if (!section) return;
+    const meta = {};
+    sectionMeta.querySelectorAll(':scope > div').forEach((row) => {
+      const cells = row.querySelectorAll(':scope > div');
+      if (cells[0] && cells[1]) {
+        meta[toClassName(cells[0].textContent.trim())] = cells[1].textContent.trim();
+      }
+    });
+    if (meta.style) {
+      meta.style.split(',').map((s) => toClassName(s.trim())).filter(Boolean)
+        .forEach((s) => section.classList.add(s));
+    }
+    Object.keys(meta).filter((k) => k !== 'style').forEach((k) => {
+      section.dataset[k] = meta[k];
+    });
+    sectionMeta.remove();
+  });
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
 }

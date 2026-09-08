@@ -1,0 +1,92 @@
+/* hero-banner — WKND "imagebottom" teaser: full-bleed image with an
+   overlapping white content box (heading + description + CTA).
+   Values extracted from wknd.site computed styles. */
+
+/* full-bleed: cancel the section's max-width + padding */
+.hero-banner-container .hero-banner-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-banner {
+  padding: 0;
+}
+
+/* --- image row: full-width landscape image --- */
+.hero-banner > div:first-child {
+  line-height: 0; /* remove inline-image descender gap */
+}
+
+.hero-banner picture {
+  display: block;
+}
+
+.hero-banner img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2; /* mobile 780x520 */
+  object-fit: cover;
+}
+
+/* --- content box row --- */
+
+/* mobile: content sits below image, no box, small side inset */
+.hero-banner > div:last-child > div {
+  position: relative;
+  padding: 0 14px;
+}
+
+.hero-banner h2 {
+  margin: 18px 0 0;
+  font-size: 36px;
+  line-height: 54px;
+  color: var(--text-color);
+}
+
+.hero-banner p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 31.5px;
+  color: var(--text-color);
+}
+
+/* CTA paragraph (last paragraph wraps the link) */
+.hero-banner > div:last-child p:last-child {
+  margin: 18px 0;
+}
+
+/* CTA link — raw <a>, not EDS-decorated .button */
+.hero-banner > div:last-child a:any-link {
+  display: inline-block;
+  background-color: #ffea00; /* WKND yellow — source CTA color */
+  color: var(--text-color);
+  padding: 14px 35px;
+  border: 0;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.hero-banner > div:last-child a:hover {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  .hero-banner img {
+    aspect-ratio: 2 / 1; /* desktop 1280x640 */
+  }
+
+  /* white box overlaps the bottom of the image */
+  .hero-banner > div:last-child > div {
+    z-index: 1;
+    box-sizing: border-box;
+    max-width: 1192px;
+    margin: -180px auto 0;
+    padding: 0 28px;
+    background-color: var(--background-color);
+  }
+}

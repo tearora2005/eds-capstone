@@ -1,0 +1,236 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "home-landing",
+      "urls": [
+        "https://wknd.site/",
+        "https://wknd.site/ca/en.html",
+        "https://wknd.site/ca/fr.html",
+        "https://wknd.site/ch/de.html",
+        "https://wknd.site/ch/fr.html",
+        "https://wknd.site/ch/it.html",
+        "https://wknd.site/de/de.html",
+        "https://wknd.site/es/es.html",
+        "https://wknd.site/fr/fr.html",
+        "https://wknd.site/it/it.html",
+        "https://wknd.site/us/en.html",
+        "https://wknd.site/us/es.html"
+      ],
+      "coverageGaps": [],
+      "description": "Locale landing/home page with hero banner and feature sections",
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": [
+            ".carousel.cmp-carousel--hero"
+          ]
+        },
+        {
+          "name": "columns-featured",
+          "instances": [
+            ".teaser.cmp-teaser--featured"
+          ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            ".image-list.list"
+          ]
+        },
+        {
+          "name": "hero-banner",
+          "instances": [
+            ".teaser.cmp-teaser--hero.cmp-teaser--imagebottom"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero carousel",
+          "selector": ".carousel.cmp-carousel--hero",
+          "style": null,
+          "blocks": [
+            "carousel-hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Featured article",
+          "selector": ".teaser.cmp-teaser--featured",
+          "style": "light-grey",
+          "blocks": [
+            "columns-featured"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Recent Articles",
+          "selector": ".image-list.list",
+          "style": null,
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Next Adventures",
+          "selector": ".teaser.cmp-teaser--hero.cmp-teaser--imagebottom",
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-5",
+          "name": "Where do you want to go",
+          "selector": ".image-list.list",
+          "style": null,
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": []
+        }
+      ]
+    },
+    {
+      "name": "overview-page",
+      "urls": [
+        "https://wknd.site/ca/en/about-us.html",
+        "https://wknd.site/ca/en/magazine.html",
+        "https://wknd.site/ca/en/magazine/members-only.html",
+        "https://wknd.site/us/en/about-us.html",
+        "https://wknd.site/us/en/magazine.html"
+      ],
+      "coverageGaps": [],
+      "description": "Section overview page with intro heading and card-grid listing of child items",
+      "blocks": [
+        {
+          "name": "cards-team",
+          "instances": [
+            ".experiencefragment.cmp-experience-fragment--contributor"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "adventure-detail",
+      "urls": [
+        "https://wknd.site/ca/en/adventures/bali-surf-camp.html",
+        "https://wknd.site/ca/en/adventures/beervana-portland.html",
+        "https://wknd.site/ca/en/adventures/climbing-new-zealand.html",
+        "https://wknd.site/ca/en/adventures/colorado-rock-climbing.html",
+        "https://wknd.site/ca/en/adventures/cycling-southern-utah.html",
+        "https://wknd.site/ca/en/adventures/cycling-tuscany.html",
+        "https://wknd.site/ca/en/adventures/downhill-skiing-wyoming.html",
+        "https://wknd.site/ca/en/adventures/gastronomic-marais-tour.html",
+        "https://wknd.site/ca/en/adventures/napa-wine-tasting.html",
+        "https://wknd.site/ca/en/adventures/riverside-camping-australia.html",
+        "https://wknd.site/ca/en/adventures/ski-touring-mont-blanc.html",
+        "https://wknd.site/ca/en/adventures/surf-camp-costa-rica.html",
+        "https://wknd.site/ca/en/adventures/tahoe-skiing.html",
+        "https://wknd.site/ca/en/adventures/west-coast-cycling.html",
+        "https://wknd.site/ca/en/adventures/whistler-mountain-biking.html",
+        "https://wknd.site/ca/en/adventures/yosemite-backpacking.html",
+        "https://wknd.site/us/en/adventures/bali-surf-camp.html",
+        "https://wknd.site/us/en/adventures/beervana-portland.html",
+        "https://wknd.site/us/en/adventures/climbing-new-zealand.html",
+        "https://wknd.site/us/en/adventures/colorado-rock-climbing.html",
+        "https://wknd.site/us/en/adventures/cycling-southern-utah.html",
+        "https://wknd.site/us/en/adventures/cycling-tuscany.html",
+        "https://wknd.site/us/en/adventures/downhill-skiing-wyoming.html",
+        "https://wknd.site/us/en/adventures/gastronomic-marais-tour.html",
+        "https://wknd.site/us/en/adventures/napa-wine-tasting.html",
+        "https://wknd.site/us/en/adventures/riverside-camping-australia.html",
+        "https://wknd.site/us/en/adventures/ski-touring-mont-blanc.html",
+        "https://wknd.site/us/en/adventures/surf-camp-costa-rica.html",
+        "https://wknd.site/us/en/adventures/tahoe-skiing.html",
+        "https://wknd.site/us/en/adventures/west-coast-cycling.html",
+        "https://wknd.site/us/en/adventures/whistler-mountain-biking.html",
+        "https://wknd.site/us/en/adventures/yosemite-backpacking.html"
+      ],
+      "coverageGaps": [],
+      "description": "Detail page with hero image, title, metadata bar and long-form body content",
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": [
+            ".carousel.cmp-carousel--mini"
+          ]
+        },
+        {
+          "name": "columns-spec",
+          "instances": [
+            ".contentfragment.cmp-contentfragment--elements"
+          ]
+        },
+        {
+          "name": "tabs-detail",
+          "instances": [
+            ".tabs.panelcontainer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "adventure-listing",
+      "urls": [
+        "https://wknd.site/ca/en/adventures.html",
+        "https://wknd.site/us/en/adventures.html"
+      ],
+      "coverageGaps": [],
+      "description": "Listing page with heading and grid of teaser cards linking to detail pages",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            ".teaser.cmp-teaser--hero"
+          ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            ".image-list.list"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "faq-page",
+      "urls": [
+        "https://wknd.site/ca/en/faqs.html",
+        "https://wknd.site/us/en/faqs.html"
+      ],
+      "coverageGaps": [],
+      "description": "Text-heavy page with heading and stacked question/answer default content",
+      "blocks": []
+    },
+    {
+      "name": "article-page",
+      "urls": [
+        "https://wknd.site/ca/en/magazine/arctic-surfing.html",
+        "https://wknd.site/ca/en/magazine/guide-la-skateparks.html",
+        "https://wknd.site/ca/en/magazine/members-only/alaskan-adventure.html",
+        "https://wknd.site/ca/en/magazine/members-only/fly-fishing-the-amazon.html",
+        "https://wknd.site/ca/en/magazine/san-diego-surf.html",
+        "https://wknd.site/ca/en/magazine/ski-touring.html",
+        "https://wknd.site/ca/en/magazine/western-australia.html",
+        "https://wknd.site/us/en/magazine/arctic-surfing.html",
+        "https://wknd.site/us/en/magazine/guide-la-skateparks.html",
+        "https://wknd.site/us/en/magazine/san-diego-surf.html",
+        "https://wknd.site/us/en/magazine/ski-touring.html",
+        "https://wknd.site/us/en/magazine/western-australia.html"
+      ],
+      "coverageGaps": [],
+      "description": "Editorial article page with hero image, title and long-form article body",
+      "blocks": []
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+/* cards-team — contributor/team profile grid variant of cards.
+   Migrated from wknd.site about-us contributor experience fragments
+   (.cmp-experience-fragment--contributor). Circular centered portrait,
+   centered name, uppercase muted role, and a centered row of social icon links. */
+
+.cards-team > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 32px;
+}
+
+.cards-team > ul > li {
+  /* source cards have no border, background, or shadow */
+  border: none;
+  background-color: transparent;
+  text-align: center;
+}
+
+/* circular portrait image */
+.cards-team .cards-team-card-image {
+  line-height: 0;
+}
+
+.cards-team .cards-team-card-image img {
+  width: 163px;
+  height: 163px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+/* body: name, role subtitle, social links, all centered */
+.cards-team .cards-team-card-body {
+  margin: 16px 0 0;
+}
+
+.cards-team .cards-team-card-body h3 {
+  margin: 12px 0 0;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+/* uppercase muted role subtitle */
+.cards-team .cards-team-card-body h5 {
+  margin: 4px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgb(105 105 105);
+}
+
+/* social icon links row */
+.cards-team .cards-team-card-body p {
+  margin: 12px 0 0;
+}
+
+.cards-team .cards-team-card-body a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 4px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+}

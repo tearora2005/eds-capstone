@@ -1,0 +1,14 @@
+{
+  "type": "da",
+  "sites": {
+    "eds-capstone": {
+      "previewOrg": "tearora2005",
+      "previewSite": "eds-capstone",
+      "contentHostUrl": "https://content.da.live/tearora2005/eds-capstone/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  },
+  "features": [
+    "site-planning"
+  ]
+}

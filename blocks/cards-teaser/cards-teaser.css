@@ -1,0 +1,66 @@
+/* cards-teaser — visual design migrated from wknd.site (.image-list.list) */
+
+/* Clean editorial teaser grid: image, uppercase title, uppercase muted description. */
+
+.cards-teaser > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.cards-teaser > ul > li {
+  /* source has no card border, background, or shadow */
+  background-color: transparent;
+  border: none;
+}
+
+/* image cell */
+.cards-teaser .cards-teaser-card-image {
+  line-height: 0;
+}
+
+.cards-teaser .cards-teaser-card-image img {
+  width: 100%;
+  aspect-ratio: 13 / 10; /* source img 260 x 200 */
+  object-fit: cover;
+}
+
+/* body cell: description is a bare text node in the <p>, uppercase + muted */
+.cards-teaser .cards-teaser-card-body {
+  margin: 9px 0 0; /* source image -> title gap */
+}
+
+.cards-teaser .cards-teaser-card-body p {
+  margin: 0;
+  font-size: 14px; /* source description */
+  line-height: 21px;
+  color: rgb(105 105 105); /* source #696969 muted description */
+  text-transform: uppercase;
+}
+
+/* title link */
+.cards-teaser .cards-teaser-card-body a {
+  display: block;
+  margin-bottom: 16px; /* source title -> description gap */
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 600;
+  color: var(--text-color); /* source #202020 */
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.cards-teaser .cards-teaser-card-body a:hover {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  .cards-teaser > ul {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 14px; /* source li padding-right column gutter */ /* source li margin-bottom */
+  }
+}
