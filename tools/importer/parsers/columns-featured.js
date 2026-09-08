@@ -16,12 +16,21 @@ export default function parse(element, { document }) {
   // Text content (right column).
   const contentCell = [];
   const eyebrow = element.querySelector('.cmp-teaser__pretitle, [class*="pretitle"], [class*="eyebrow"]');
-  const heading = element.querySelector('.cmp-teaser__title, h1, h2, h3, [class*="title"]');
+  // Heading: prefer the teaser title, then real heading tags. Do NOT use a
+  // generic [class*="title"] fallback — it also matches ".cmp-teaser__pretitle"
+  // (…pre-TITLE…), which sits before the <h2> and would shadow the real title.
+  let heading = element.querySelector('.cmp-teaser__title, h1, h2, h3, h4');
+  if (heading && heading === eyebrow) heading = null;
   const description = element.querySelector('.cmp-teaser__description, [class*="description"], p:not([class*="pretitle"])');
   const ctaLinks = Array.from(element.querySelectorAll('.cmp-teaser__action-link, .cmp-teaser__action-container a, a.button'));
 
   if (eyebrow) contentCell.push(eyebrow);
-  if (heading) contentCell.push(heading);
+  if (heading) {
+    // Normalize to an <h2> so it renders as the featured-article heading.
+    const h = document.createElement('h2');
+    h.textContent = heading.textContent.trim();
+    contentCell.push(h);
+  }
   if (description) contentCell.push(description);
   contentCell.push(...ctaLinks);
 
