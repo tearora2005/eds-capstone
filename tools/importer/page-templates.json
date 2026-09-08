@@ -129,6 +129,12 @@
           "instances": [
             ".image-list.list"
           ]
+        },
+        {
+          "name": "cards-secure",
+          "instances": [
+            ".teaser.cmp-teaser--secure"
+          ]
         }
       ]
     },
