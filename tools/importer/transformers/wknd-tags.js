@@ -11,6 +11,16 @@
  *
  * Must run in beforeTransform, before columns-spec replaces the fragment DOM.
  */
+// Map raw source Activity values onto the site's category tabs
+// (All / Climbing / Cycling / Skiing / Surfing / Travel). The source uses finer
+// activities (e.g. "Rock Climbing", "Camping", "Social") that must roll up to
+// the coarser tab labels wknd.site groups them under.
+const CATEGORY_MAP = {
+  'rock climbing': 'Climbing',
+  camping: 'Travel',
+  social: 'Travel',
+};
+
 export default function transform(hookName, element, payload) {
   if (hookName !== 'beforeTransform') return;
 
@@ -24,5 +34,8 @@ export default function transform(hookName, element, payload) {
     }
   });
 
-  if (activity) element.setAttribute('data-excat-tags', activity);
+  if (activity) {
+    const category = CATEGORY_MAP[activity.toLowerCase()] || activity;
+    element.setAttribute('data-excat-tags', category);
+  }
 }

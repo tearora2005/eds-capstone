@@ -181,6 +181,11 @@ var CustomImportScript = (() => {
   }
 
   // tools/importer/transformers/wknd-tags.js
+  var CATEGORY_MAP = {
+    "rock climbing": "Climbing",
+    camping: "Travel",
+    social: "Travel"
+  };
   function transform3(hookName, element, payload) {
     if (hookName !== "beforeTransform") return;
     const specs = element.querySelectorAll(".cmp-contentfragment__element");
@@ -192,7 +197,10 @@ var CustomImportScript = (() => {
         activity = value.textContent.trim();
       }
     });
-    if (activity) element.setAttribute("data-excat-tags", activity);
+    if (activity) {
+      const category = CATEGORY_MAP[activity.toLowerCase()] || activity;
+      element.setAttribute("data-excat-tags", category);
+    }
   }
 
   // tools/importer/import-adventure-detail.js
