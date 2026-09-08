@@ -3,11 +3,12 @@
 
 // PARSER IMPORTS
 import heroBannerParser from './parsers/hero-banner.js';
-import cardsTeaserParser from './parsers/cards-teaser.js';
+import listingParser from './parsers/listing.js';
 
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/wknd-cleanup.js';
 import sectionsTransformer from './transformers/wknd-sections.js';
+import adventureListingTransformer from './transformers/wknd-adventure-listing.js';
 
 // PAGE TEMPLATE CONFIGURATION - Embedded from page-templates.json
 const PAGE_TEMPLATE = {
@@ -24,7 +25,7 @@ const PAGE_TEMPLATE = {
       ]
     },
     {
-      "name": "cards-teaser",
+      "name": "listing",
       "instances": [
         ".image-list.list"
       ]
@@ -35,12 +36,13 @@ const PAGE_TEMPLATE = {
 // PARSER REGISTRY
 const parsers = {
   'hero-banner': heroBannerParser,
-  'cards-teaser': cardsTeaserParser,
+  listing: listingParser,
 };
 
 // TRANSFORMER REGISTRY
 const transformers = [
   cleanupTransformer,
+  adventureListingTransformer,
   sectionsTransformer,
 ];
 

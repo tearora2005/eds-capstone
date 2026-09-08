@@ -35,7 +35,7 @@
           ]
         },
         {
-          "name": "cards-teaser",
+          "name": "listing",
           "instances": [
             ".image-list.list"
           ]
@@ -74,7 +74,7 @@
           "selector": ".image-list.list",
           "style": null,
           "blocks": [
-            "cards-teaser"
+            "listing"
           ],
           "defaultContent": []
         },
@@ -94,7 +94,7 @@
           "selector": ".image-list.list",
           "style": null,
           "blocks": [
-            "cards-teaser"
+            "listing"
           ],
           "defaultContent": []
         }
@@ -125,7 +125,7 @@
           ]
         },
         {
-          "name": "cards-teaser",
+          "name": "listing",
           "instances": [
             ".image-list.list"
           ]
@@ -213,7 +213,7 @@
           ]
         },
         {
-          "name": "cards-teaser",
+          "name": "listing",
           "instances": [
             ".image-list.list"
           ]
