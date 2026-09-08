@@ -1,6 +1,8 @@
 // WKND footer — content-first. All copy/links/images come from /content/footer.plain.html.
 // footer.js reads that DOM and renders; it never hardcodes copy.
 
+import { decorateInternalLinks } from '../../scripts/scripts.js';
+
 /**
  * Loads the footer fragment (metadata-independent dual-fetch).
  * @returns {Promise<Document|null>} parsed fragment document
@@ -71,4 +73,7 @@ export default async function decorate(block) {
 
   footer.append(topRow, legal);
   block.append(footer);
+
+  // Normalize internal .html links to extensionless EDS paths.
+  decorateInternalLinks(block);
 }

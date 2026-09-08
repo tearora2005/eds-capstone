@@ -175,7 +175,29 @@ function decorateSectionMetadata(main) {
   });
 }
 
-// eslint-disable-next-line import/prefer-default-export
+/**
+ * Rewrites internal ".html" links to extensionless EDS paths.
+ * The migrated WKND content links to e.g. /us/en/magazine.html, but EDS serves
+ * extensionless paths (/us/en/magazine), so the .html variants 404. Strip the
+ * .html suffix from same-origin, non-asset anchors. Exported so the header and
+ * footer blocks (decorated outside decorateMain) can apply the same fix.
+ * @param {Element} container The container element whose anchors to normalize
+ */
+export function decorateInternalLinks(container) {
+  container.querySelectorAll('a[href]').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (!href) return;
+    // Only touch internal .html document links (not assets, hashes, or externals).
+    if (!/\.html($|[?#])/.test(href)) return;
+    try {
+      const url = new URL(href, window.location.href);
+      if (url.origin !== window.location.origin) return; // leave external links
+      url.pathname = url.pathname.replace(/\.html$/, '');
+      a.setAttribute('href', url.pathname + url.search + url.hash);
+    } catch { /* leave malformed hrefs untouched */ }
+  });
+}
+
 export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
@@ -183,6 +205,7 @@ export function decorateMain(main) {
   decorateSectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
+  decorateInternalLinks(main);
 }
 
 /**
