@@ -41,6 +41,7 @@
 .cards-teaser .cards-teaser-card-body p,
 .cards-teaser .cards-teaser-card-desc {
   margin: 0;
+  min-width: 0; /* allow truncation within the fixed-width card */
   font-size: 14px; /* source description */
   line-height: 21px;
   color: rgb(105 105 105); /* source #696969 muted description */
