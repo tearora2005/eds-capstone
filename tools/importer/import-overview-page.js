@@ -3,6 +3,9 @@
 
 // PARSER IMPORTS
 import cardsTeamParser from './parsers/cards-team.js';
+import columnsFeaturedParser from './parsers/columns-featured.js';
+import cardsTeaserParser from './parsers/cards-teaser.js';
+import cardsSecureParser from './parsers/cards-secure.js';
 
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/wknd-cleanup.js';
@@ -21,6 +24,24 @@ const PAGE_TEMPLATE = {
       "instances": [
         ".experiencefragment.cmp-experience-fragment--contributor"
       ]
+    },
+    {
+      "name": "columns-featured",
+      "instances": [
+        ".teaser.cmp-teaser--featured"
+      ]
+    },
+    {
+      "name": "cards-teaser",
+      "instances": [
+        ".image-list.list"
+      ]
+    },
+    {
+      "name": "cards-secure",
+      "instances": [
+        ".teaser.cmp-teaser--secure"
+      ]
     }
   ]
 };
@@ -28,6 +49,9 @@ const PAGE_TEMPLATE = {
 // PARSER REGISTRY
 const parsers = {
   'cards-team': cardsTeamParser,
+  'columns-featured': columnsFeaturedParser,
+  'cards-teaser': cardsTeaserParser,
+  'cards-secure': cardsSecureParser,
 };
 
 // TRANSFORMER REGISTRY

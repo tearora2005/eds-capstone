@@ -1,0 +1,68 @@
+/* cards-secure — WKND "Members Only" teaser cards (.cmp-teaser--secure).
+   Two cards side-by-side on desktop; each shows title, description, Read More, image. */
+
+.cards-secure > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.cards-secure > ul > li {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border: none;
+}
+
+/* body cell: title + description + Read More (above the image) */
+.cards-secure .cards-secure-card-body {
+  order: 0;
+  margin: 0 0 16px;
+}
+
+.cards-secure .cards-secure-card-body h3 {
+  margin: 0 0 12px;
+  font-family: var(--heading-font-family);
+  font-weight: 400;
+  font-size: var(--heading-font-size-l);
+  line-height: 1.3;
+  color: var(--text-color);
+}
+
+.cards-secure .cards-secure-card-body p {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.cards-secure .cards-secure-card-body a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.cards-secure .cards-secure-card-body a:hover {
+  text-decoration: underline;
+}
+
+/* image cell (rendered below the body, like the source secure teaser) */
+.cards-secure .cards-secure-card-image {
+  order: 1;
+  line-height: 0;
+}
+
+.cards-secure .cards-secure-card-image img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+@media (width >= 900px) {
+  .cards-secure > ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}

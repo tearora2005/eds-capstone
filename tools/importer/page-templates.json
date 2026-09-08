@@ -117,6 +117,24 @@
           "instances": [
             ".experiencefragment.cmp-experience-fragment--contributor"
           ]
+        },
+        {
+          "name": "columns-featured",
+          "instances": [
+            ".teaser.cmp-teaser--featured"
+          ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            ".image-list.list"
+          ]
+        },
+        {
+          "name": "cards-secure",
+          "instances": [
+            ".teaser.cmp-teaser--secure"
+          ]
         }
       ]
     },
