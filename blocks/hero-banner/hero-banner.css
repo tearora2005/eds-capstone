@@ -80,10 +80,15 @@
     aspect-ratio: 2 / 1; /* desktop 1280x640 */
   }
 
-  /* white box overlaps the bottom of the image */
+  /* white box overlaps the bottom of the image. Source (.cmp-teaser__content):
+     fixed height 180px + margin-top -180px, so the box bottom sits flush with
+     the image bottom (the -180px pull is fully cancelled by the 180px height).
+     Without the explicit height the box collapses to content height and rides
+     up into the image, colliding with the next section. */
   .hero-banner > div:last-child > div {
     z-index: 1;
     box-sizing: border-box;
+    height: 180px;
     max-width: 1192px;
     margin: -180px auto 0;
     padding: 0 28px;
