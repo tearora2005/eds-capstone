@@ -19,6 +19,10 @@ export default function transform(hookName, element, payload) {
       '#toggleNav',
       '#mobileNav',
       '#destination_publishing_iframe_wkndsite_0',
+      // Content-fragment internal title (e.g. article pages) duplicates the
+      // page H1 (.cmp-title__text) — drop it so the article body has no
+      // repeated <h3> title.
+      '.cmp-contentfragment__title',
     ]);
   }
 
