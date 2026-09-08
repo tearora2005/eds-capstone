@@ -42,12 +42,14 @@
   text-transform: uppercase;
 }
 
-/* Truncate the description to a single line with an ellipsis (matches source). */
+/* Truncate the description to a single line with an ellipsis (matches source).
+   Block-level + nowrap + text-overflow is the most reliable one-line clamp. */
 .cards-teaser .cards-teaser-card-desc {
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  display: block;
+  max-width: 100%;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* title link */
