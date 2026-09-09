@@ -1,37 +1,58 @@
 /* columns-spec — WKND adventure metadata specification list.
-   Vertical label/value pairs, each with a small uppercase label above a
-   larger value and a thin accent bar. Migrated from the vanilla columns block. */
+   Source (.cmp-contentfragment__element): each label/value pair is a chip with
+   a left accent bar, a small uppercase dimgray label above a 14px/600 value,
+   ~84px tall, floated so several sit per row. */
 
+/* the block is a wrapping row of spec chips */
+.columns-spec {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 0;
+}
+
+/* each label/value pair = one chip */
 .columns-spec > div {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  min-height: 84px;
+  padding: 0 2em 0 1em;
+  border-left: 5px solid #ebebeb; /* source brandThird accent bar */
 }
 
+/* strip the authored bullet lists */
+.columns-spec ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* label cell (first): small uppercase dimgray */
+.columns-spec > div > div:first-child {
+  padding-top: 1em;
+  color: dimgray;
+  font-size: 12px; /* source 9pt */
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* value cell (last): 14px / 600 uppercase */
+.columns-spec > div > div:last-child {
+  padding-top: 0.5em;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+/* image column (generic columns-spec use) stays full-width above content */
 .columns-spec img {
+  display: block;
   width: 100%;
-}
-
-.columns-spec > div > div {
-  order: 1;
 }
 
 .columns-spec > div > .columns-spec-img-col {
   order: 0;
-}
-
-.columns-spec > div > .columns-spec-img-col img {
-  display: block;
-}
-
-@media (width >= 900px) {
-  .columns-spec > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
-  }
-
-  .columns-spec > div > div {
-    flex: 1;
-    order: unset;
-  }
+  padding: 0;
+  border-left: 0;
 }
