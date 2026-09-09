@@ -1,37 +1,121 @@
 /* columns-spec — WKND adventure metadata specification list.
-   Vertical label/value pairs, each with a small uppercase label above a
-   larger value and a thin accent bar. Migrated from the vanilla columns block. */
+   Source (.cmp-contentfragment__element): a vertical stack of label/value pairs
+   forming the detail page's left sidebar. Each pair has a left accent bar, a
+   small uppercase dimgray label above a 14px/600 uppercase value. */
 
+/* vertical stack of spec chips */
+.columns-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* each label/value pair = one chip with a left accent bar */
 .columns-spec > div {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  min-height: 84px;
+  padding: 0 1em;
+  border-left: 5px solid #ebebeb; /* source brandThird accent bar */
 }
 
+/* strip the authored bullet lists */
+.columns-spec ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* label cell (first): small uppercase dimgray */
+.columns-spec > div > div:first-child {
+  padding-top: 1em;
+  color: dimgray;
+  font-size: 12px; /* source 9pt */
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* value cell (last): 14px / 600 uppercase */
+.columns-spec > div > div:last-child {
+  padding-top: 0.5em;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+/* image column (generic columns-spec use) stays full-width above content */
 .columns-spec img {
+  display: block;
   width: 100%;
-}
-
-.columns-spec > div > div {
-  order: 1;
 }
 
 .columns-spec > div > .columns-spec-img-col {
   order: 0;
+  padding: 0;
+  border-left: 0;
 }
 
-.columns-spec > div > .columns-spec-img-col img {
-  display: block;
-}
+/* --- Adventure-detail 2-column layout (specs sidebar | tabbed content) ---
+   Source uses a 3/12 spec sidebar beside a 9/12 tab column, with a full-bleed
+   carousel above. Our detail page is a single flat section whose wrappers are,
+   in DOM order: breadcrumb, carousel, title (h1), specs, "Share this Adventure"
+   heading, tabs. aem.js adds a `columns-spec-container` class to that section,
+   which we key off so this only affects adventure-detail pages.
 
+   We lay it out as a full-bleed content grid. Because the Share heading sits
+   between the specs and the tabs in the DOM, grid auto-placement would push the
+   tabs onto a later row (leaving the right column empty beside the specs), so
+   we pin explicit rows: the top three items auto-flow into rows 1–3, then the
+   specs and Share heading stack in the left column (rows 4–5) while the tabs
+   span both of those rows in the right column — starting level with the specs.
+   Below 900px the grid is not applied, so everything stacks (source mobile). */
 @media (width >= 900px) {
-  .columns-spec > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+  main > .section.columns-spec-container {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(24px, 1fr)
+      [content-start] minmax(0, 280px)
+      [main-start] minmax(0, 852px)
+      [content-end] minmax(24px, 1fr) [full-end];
+    gap: 24px 32px;
+    align-items: start;
   }
 
-  .columns-spec > div > div {
-    flex: 1;
-    order: unset;
+  /* the grid owns spacing now — drop each wrapper's own centering/padding */
+  main > .section.columns-spec-container > * {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* breadcrumb + title span the centered content band (auto rows 1 & 3) */
+  main > .section.columns-spec-container > .default-content-wrapper {
+    grid-column: content-start / content-end;
+  }
+
+  /* full-bleed row: carousel spans edge to edge (auto row 2) */
+  main > .section.columns-spec-container > .carousel-hero-wrapper {
+    grid-column: full-start / full-end;
+  }
+
+  /* left sidebar row 4: the spec list */
+  main > .section.columns-spec-container > .columns-spec-wrapper {
+    grid-column: content-start / main-start;
+    grid-row: 4;
+  }
+
+  /* left sidebar row 5: the "Share this Adventure" heading, under the specs */
+  main > .section.columns-spec-container > .default-content-wrapper:has(#share-this-adventure) {
+    grid-column: content-start / main-start;
+    grid-row: 5;
+    align-self: start;
+  }
+
+  /* right column: the tabs, spanning the specs + Share rows so they start level */
+  main > .section.columns-spec-container > .tabs-detail-wrapper {
+    grid-column: main-start / content-end;
+    grid-row: 4 / span 2;
   }
 }

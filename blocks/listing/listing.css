@@ -41,7 +41,7 @@
 .listing .cards-teaser-card-desc {
   display: block;
   max-width: 100%;
-  margin: 0;
+  margin: 16px 0 0; /* source .cmp-image-list__item-description margin-top: 1rem */
   min-width: 0;
   font-size: 14px;
   line-height: 21px;
@@ -55,7 +55,7 @@
 /* title link */
 .listing .cards-teaser-card-body a {
   display: block;
-  margin-bottom: 16px; /* source title -> description gap */
+  margin-bottom: 0; /* gap comes from the description's margin-top (source) */
   font-size: 18px;
   line-height: 27px;
   font-weight: 600;

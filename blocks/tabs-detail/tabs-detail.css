@@ -45,8 +45,10 @@
 
 
 .tabs-detail .tabs-detail-list button[aria-selected='true'] {
-  border-bottom: 1px solid var(--background-color);
-  background-color: var(--background-color);
+  /* source .cmp-tabs__tab--active: solid dark chip, white text, no border */
+  border-color: #202020;
+  background-color: #202020;
+  color: #fff;
   cursor: initial;
 }
 

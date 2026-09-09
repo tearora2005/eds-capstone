@@ -83,8 +83,10 @@
 }
 
 @media (width >= 900px) {
+  /* source .cmp-teaser--featured: flex-direction row-reverse on desktop, so the
+     image sits on the RIGHT and the grey content box on the LEFT */
   .columns-featured > div {
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: stretch;
   }
 
