@@ -9,8 +9,12 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const label = row.children[0];
     const body = row.children[1];
-    // skip malformed rows (e.g. a stray single-cell row) — a valid item needs both
-    if (!label || !body) return;
+    // remove a stray single-cell row (e.g. a leftover block-name row) — a valid
+    // accordion item needs both a label and a body cell
+    if (!label || !body) {
+      row.remove();
+      return;
+    }
     // decorate accordion item label (question)
     const summary = document.createElement('summary');
     summary.className = 'accordion-item-label';
