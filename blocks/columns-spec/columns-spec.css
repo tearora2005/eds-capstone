@@ -1,22 +1,22 @@
 /* columns-spec — WKND adventure metadata specification list.
-   Source (.cmp-contentfragment__element): each label/value pair is a chip with
-   a left accent bar, a small uppercase dimgray label above a 14px/600 value,
-   ~84px tall, floated so several sit per row. */
+   Source (.cmp-contentfragment__element): a vertical stack of label/value pairs
+   forming the detail page's left sidebar. Each pair has a left accent bar, a
+   small uppercase dimgray label above a 14px/600 uppercase value. */
 
-/* the block is a wrapping row of spec chips */
+/* vertical stack of spec chips */
 .columns-spec {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px 0;
+  flex-direction: column;
+  gap: 20px;
 }
 
-/* each label/value pair = one chip */
+/* each label/value pair = one chip with a left accent bar */
 .columns-spec > div {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   min-height: 84px;
-  padding: 0 2em 0 1em;
+  padding: 0 1em;
   border-left: 5px solid #ebebeb; /* source brandThird accent bar */
 }
 
@@ -55,4 +55,56 @@
   order: 0;
   padding: 0;
   border-left: 0;
+}
+
+/* --- Adventure-detail 2-column layout (specs sidebar | tabbed content) ---
+   Source uses a 3/12 spec sidebar beside a 9/12 tab column, with a full-bleed
+   carousel above. Our page is a single flat section (carousel, breadcrumb, h1,
+   specs, "Share this Adventure" heading, tabs as sibling wrappers). aem.js adds
+   a `columns-spec-container` class to that section, which we key off so this
+   only affects adventure-detail pages. We lay the section out as a full-bleed
+   content grid: the carousel spans edge to edge, the breadcrumb + title span
+   the centered content band, specs + the Share heading occupy the left column,
+   and the tabs occupy the right column beside them. Below 900px the grid is not
+   applied, so everything stacks naturally (matches the source mobile). */
+@media (width >= 900px) {
+  main > .section.columns-spec-container {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(24px, 1fr)
+      [content-start] minmax(0, 280px)
+      [main-start] minmax(0, 852px)
+      [content-end] minmax(24px, 1fr) [full-end];
+    gap: 24px 32px;
+    align-items: start;
+  }
+
+  /* the grid owns spacing now — drop each wrapper's own centering/padding */
+  main > .section.columns-spec-container > * {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* default: any content band spans the centered content columns (breadcrumb, title) */
+  main > .section.columns-spec-container > .default-content-wrapper {
+    grid-column: content-start / content-end;
+  }
+
+  /* full-bleed row: carousel spans edge to edge */
+  main > .section.columns-spec-container > .carousel-hero-wrapper {
+    grid-column: full-start / full-end;
+  }
+
+  /* left sidebar: the spec list and the "Share this Adventure" heading */
+  main > .section.columns-spec-container > .columns-spec-wrapper,
+  main > .section.columns-spec-container > .default-content-wrapper:has(#share-this-adventure) {
+    grid-column: content-start / main-start;
+  }
+
+  /* right column: the tabbed content, beside the specs + Share heading */
+  main > .section.columns-spec-container > .tabs-detail-wrapper {
+    grid-column: main-start / content-end;
+    grid-row: span 2;
+  }
 }
