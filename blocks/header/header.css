@@ -2,9 +2,18 @@
    Mobile-first: base styles are mobile; @media (width >= 900px) enhances desktop. */
 
 /* Two-row header (utility bar + main bar) is taller than the global
-   --nav-height reserve in styles.css; let it size to its content. */
+   --nav-height reserve in styles.css. Reserve the real rendered height up front
+   so the main content does not shift down when the nav fragment loads (CLS).
+   Mobile renders ~95px, desktop ~118px; use min-height so content can still grow. */
 header {
   height: auto;
+  min-height: 95px;
+}
+
+@media (width >= 900px) {
+  header {
+    min-height: 118px;
+  }
 }
 
 header .nav-wrapper {
@@ -138,6 +147,7 @@ header nav .nav-brand img {
   display: block;
   width: 100px;
   height: auto;
+  aspect-ratio: 239 / 89; /* logo intrinsic ratio — reserves box before load (no CLS) */
 }
 
 /* Hamburger (mobile only) */
