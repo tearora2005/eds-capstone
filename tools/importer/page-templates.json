@@ -227,8 +227,15 @@
         "https://wknd.site/us/en/faqs.html"
       ],
       "coverageGaps": [],
-      "description": "Text-heavy page with heading and stacked question/answer default content",
-      "blocks": []
+      "description": "Text-heavy page with heading, intro, and an accordion of Q&A items",
+      "blocks": [
+        {
+          "name": "accordion",
+          "instances": [
+            ".accordion.panelcontainer"
+          ]
+        }
+      ]
     },
     {
       "name": "article-page",

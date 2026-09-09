@@ -2,7 +2,7 @@
 /* global WebImporter */
 
 // PARSER IMPORTS
-// (no block parsers — page is default content only)
+import accordionParser from './parsers/accordion.js';
 
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/wknd-cleanup.js';
@@ -11,16 +11,23 @@ import sectionsTransformer from './transformers/wknd-sections.js';
 // PAGE TEMPLATE CONFIGURATION - Embedded from page-templates.json
 const PAGE_TEMPLATE = {
   "name": "faq-page",
-  "description": "Text-heavy page with heading and stacked question/answer default content",
+  "description": "Text-heavy page with heading, intro, and an accordion of Q&A items",
   "urls": [
     "https://wknd.site/ca/en/faqs.html"
   ],
-  "blocks": []
+  "blocks": [
+    {
+      "name": "accordion",
+      "instances": [
+        ".accordion.panelcontainer"
+      ]
+    }
+  ]
 };
 
 // PARSER REGISTRY
 const parsers = {
-
+  accordion: accordionParser,
 };
 
 // TRANSFORMER REGISTRY
