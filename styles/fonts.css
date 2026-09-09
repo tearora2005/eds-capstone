@@ -1,3 +1,4 @@
-/* Brand fonts (Asar + Source Sans Pro) load via Google Fonts in head.html.
-   The deferred fonts.css loader is kept as a no-op so no unused font files
-   are fetched post-LCP. */
+/* Brand fonts (Asar + Source Sans Pro), loaded asynchronously post-LCP via
+   loadFonts() so the Google Fonts stylesheet does not block first render.
+   display=swap shows the fallback immediately, then swaps in the web font. */
+@import url("https://fonts.googleapis.com/css2?family=Asar&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap");

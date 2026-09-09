@@ -6,6 +6,16 @@ footer {
   color: #ebebeb;
   font-family: var(--body-font-family);
   font-size: 14px;
+
+  /* Reserve the footer's rendered height so it doesn't shift content when the
+     fragment loads (CLS). Desktop ~247px, mobile stacks taller (~620px). */
+  min-height: 620px;
+}
+
+@media (width >= 900px) {
+  footer {
+    min-height: 247px;
+  }
 }
 
 footer .footer-inner {
@@ -42,6 +52,7 @@ footer .footer-brand img {
   display: block;
   width: 120px;
   height: auto;
+  aspect-ratio: 239 / 89; /* logo intrinsic ratio — reserves box before load (no CLS) */
   margin-bottom: 20px;
 }
 
