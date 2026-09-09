@@ -7,13 +7,15 @@
 
 export default function decorate(block) {
   [...block.children].forEach((row) => {
-    // decorate accordion item label (question)
     const label = row.children[0];
+    const body = row.children[1];
+    // skip malformed rows (e.g. a stray single-cell row) — a valid item needs both
+    if (!label || !body) return;
+    // decorate accordion item label (question)
     const summary = document.createElement('summary');
     summary.className = 'accordion-item-label';
     summary.append(...label.childNodes);
     // decorate accordion item body (answer)
-    const body = row.children[1];
     body.className = 'accordion-item-body';
     // decorate accordion item
     const details = document.createElement('details');
